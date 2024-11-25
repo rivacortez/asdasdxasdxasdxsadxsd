@@ -4,6 +4,7 @@ package org.kinaxis.platform.u202215313.commerce.interfaces.rest;
 
 
 import org.kinaxis.platform.u202215313.commerce.domain.model.aggregates.OrderItem;
+import org.kinaxis.platform.u202215313.commerce.domain.model.commands.CreateOrderItemCommand;
 import org.kinaxis.platform.u202215313.commerce.domain.services.OrderItemCommandService;
 import org.kinaxis.platform.u202215313.commerce.interfaces.rest.resources.CreateOrderItemResource;
 import org.kinaxis.platform.u202215313.commerce.interfaces.rest.resources.OrderItemResource;
@@ -41,10 +42,9 @@ public class OrderItemController {
     })
     public ResponseEntity<OrderItemResource> createOrderItem(@PathVariable Long orderId, @RequestBody CreateOrderItemResource resource) {
         var command = CreateOrderItemCommandFromResourceAssembler.toCommand(resource);
+        command = new CreateOrderItemCommand(orderId, command.kinaxisSku(), command.requestedQuantity());
         var orderItem = orderItemCommandService.createOrderItem(command);
         var orderItemResource = OrderItemResourceFromEntityAssembler.toResource(orderItem);
         return new ResponseEntity<>(orderItemResource, HttpStatus.CREATED);
     }
-
-
 }
