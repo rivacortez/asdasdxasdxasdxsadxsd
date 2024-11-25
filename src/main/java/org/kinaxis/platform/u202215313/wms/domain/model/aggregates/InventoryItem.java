@@ -3,7 +3,6 @@ package org.kinaxis.platform.u202215313.wms.domain.model.aggregates;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.GenericGenerator;
 import org.kinaxis.platform.u202215313.shared.domain.model.aggregates.AuditableAbstractAggregateRoot;
 import org.kinaxis.platform.u202215313.wms.domain.model.valueobjects.InventoryItemStatus;
 

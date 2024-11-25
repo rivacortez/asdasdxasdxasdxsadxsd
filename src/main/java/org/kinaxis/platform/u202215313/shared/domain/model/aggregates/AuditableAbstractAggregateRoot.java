@@ -1,5 +1,4 @@
 package org.kinaxis.platform.u202215313.shared.domain.model.aggregates;
-
 import jakarta.persistence.*;
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
@@ -27,5 +26,4 @@ public class AuditableAbstractAggregateRoot<T extends AbstractAggregateRoot<T>> 
     @LastModifiedDate
     @Column(nullable = false)
     private Date updatedAt;
-
 }
